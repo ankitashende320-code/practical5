@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Calculator </title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing: border-box;
+}
+
+/* New Background */
+body{
+font-family: Arial;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+background: linear-gradient(to right, #1d2b64, #f8cdda);
+}
+
+/* Calculator Box */
+.calculator{
+background:#2c2c54;
+border-radius:15px;
+padding:20px;
+width:300px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Display */
+.display{
+width:100%;
+height:60px;
+margin-bottom:10px;
+font-size:20px;
+text-align:right;
+padding:10px;
+border-radius:10px;
+border:none;
+background: #1e1e2f;
+color:white;
+}
+
+/* Buttons */
+.buttons{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+}
+
+.btn{
+padding:12px;
+font-size:16px;
+background:#40407a;
+color:white;
+cursor:pointer;
+border-radius:10px;
+border:none;
+transition:0.2s;
+}
+
+/* Hover */
+.btn:hover{
+background:#706fd3;
+}
+
+/* Special Buttons */
+.btn:nth-child(4n){
+background:#ff793f;
+}
+
+.btn:nth-child(4n):hover{
+background:#ff5252;
+}
+
+.btn:nth-child(14){
+background:#33d9b2;
+grid-column: span 2;
+}
+
+.btn:nth-child(14):hover{
+background:#218c74;
+}
+
+.btn:nth-child(15){
+background:#ff4d4d;
+}
+
+.btn:nth-child(15):hover{
+background:#cc0000;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+<input type="text" id="display" class="display" value="" disabled>
+
+<div class="buttons">
+<button class="btn" onclick="Display(1)">1</button>
+<button class="btn" onclick="Display(2)">2</button>
+<button class="btn" onclick="Display(3)">3</button>
+<button class="btn" onclick="Display('+')">+</button>
+
+<button class="btn" onclick="Display(4)">4</button>
+<button class="btn" onclick="Display(5)">5</button>
+<button class="btn" onclick="Display(6)">6</button>
+<button class="btn" onclick="Display('-')">-</button>
+
+<button class="btn" onclick="Display(7)">7</button>
+<button class="btn" onclick="Display(8)">8</button>
+<button class="btn" onclick="Display(9)">9</button>
+<button class="btn" onclick="Display('*')">*</button>
+
+<button class="btn" onclick="Display(0)">0</button>
+<button class="btn" onclick="Result()">=</button>
+<button class="btn" onclick="clearDisplay()">C</button>
+<button class="btn" onclick="Display('/')">/</button>
+
+<button class="btn" onclick="Display('.')">.</button>
+</div>
+</div>
+
+<script>
+let display = document.getElementById('display');
+
+function clearDisplay(){
+display.value='';
+}
+
+function Display(value){
+display.value += value;
+}
+
+function Result(){
+try{
+display.value = eval(display.value);
+}
+catch{
+display.value = "Error";
+}
+}
+</script>
+
+</body>
+</html>
